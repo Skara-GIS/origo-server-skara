@@ -122,6 +122,17 @@ module.exports = {
       }
     }
   },
+  lmcommunityassociation: {
+    url: "https://api.lantmateriet.se/distribution/produkter/samfallighetsforening/v2.2",
+    url_ga: "https://api.lantmateriet.se/distribution/produkter/gemensamhetsanlaggning/v2.1",
+    url_fs: "https://api.lantmateriet.se/distribution/produkter/fastighetsamfallighet/v3.1",
+    url_token: "https://apimanager.lantmateriet.se/oauth2/token",
+    url_revoke: "https://apimanager.lantmateriet.se/oauth2/revoke",
+    consumer_key: 'xxxxx',
+    consumer_secret: 'xxxxx',
+    grant_type: 'client_credentials',
+    scope: 'samfallighetsforening_direkt_v22_read gemensamhetsanlaggning_direkt_v21_read fastighetochsamfallighet_direkt_v31_read',
+  },
   cors: {
     origin: '*',
     methods: ['GET', 'PUT', 'POST', 'OPTIONS', 'PATCH', 'DELETE'],
@@ -198,5 +209,9 @@ module.exports = {
   },
   attachment: {
     filepath: "C:\\attachment\\"
+  },
+  behindProxy: {
+    trustProxy: false, // Configure express for use behind proxy. If true, the client’s IP address is understood as the left-most entry in the X-Forwarded-For header (should generally be avoided in production). For other options, see https://expressjs.com/en/guide/behind-proxies.html.
+    trimForwardedPorts: false // When trusting a source IP forwarded by a proxy, remove port numbers. Otherwise a client may bypass the rate-limiter by changing its port number.
   }
 }
