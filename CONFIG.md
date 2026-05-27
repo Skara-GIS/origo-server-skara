@@ -46,6 +46,36 @@ If you have data from IoT sensors in NGSI-LD standard and want to read it direct
 
 		properties - an array with the names of the objects which should be transferred into properties of the feature in the GeoJSON.
 
+- IoTProxyYggio - retrieves Yggio IoT node data, assembles a GeoJSON Point from configured latitude/longitude fields, and returns data attributes.
+
+        timeout - optional; global request timeout in milliseconds for upstream calls. Default is 10000.
+
+        maxResponseSizeMB - optional; maximum allowed upstream response size in Megabytes (MB). Default is 1.
+
+        internalBlocklist - an array containing IP addresses or network prefixes (e.g., '10.', '192.168.') that the proxy is prohibited from calling to prevent internal network access.
+
+        services - an array which holds one or more Yggio endpoint definitions.
+
+        name - a unique name for the service which is used to call it from the front end (via q parameter).
+
+        url - the url to the Yggio node or sensor payload.
+
+        title - the title that is used as name in the GeoJSON FeatureCollection.
+
+        lat - the property name in the response payload that holds the latitude (e.g., "latitude"). To override and use a fixed position, enter the raw static coordinate as a number or string (e.g., "58.3941"). Defaults to "latitude".
+
+        lon - the property name in the response payload that holds the longitude (e.g., "longitude"). To override and use a fixed position, enter the raw static coordinate as a number or string (e.g., "13.4322"). Defaults to "longitude".
+
+        auth - optional authentication settings.
+
+            token_url - the token endpoint for Yggio authentication.
+
+            user - username for the token request.
+
+            pass - password for the token request.
+
+            token - optional; static bearer token used if dynamic authentication flow is not required.
+
 - Overpass - get data from OpenStreetMap through the Overpass API.
 
 A typical query can be to get all nodes tagged with some key within a area limited by a bounding box. Test your queries in [overpass turbo](https://overpass-turbo.eu/) Read more about [Overpass API](https://wiki.openstreetmap.org/wiki/Overpass_API) Uses the module [query-overpass](https://github.com/perliedman/query-overpass)
